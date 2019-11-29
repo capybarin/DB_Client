@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="io.reactivex.rxjava2:rxjavafx:2.11.0-RC16" type="repository">
+    <properties maven-id="io.reactivex.rxjava2:rxjavafx:2.11.0-RC16" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/rxjavafx-2.11.0-RC16.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

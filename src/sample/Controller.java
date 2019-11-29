@@ -55,7 +55,7 @@ public class Controller {
         initializeTable();
     }
 
-    public void buttonAddClicked(ActionEvent actionEvent) {
+    public void buttonAddClicked(ActionEvent actionEvent) throws IOException, SQLException {
         switch (tableContainer.getSelectionModel().getSelectedIndex()){
             //Manufacture
             case (0):{
@@ -66,9 +66,12 @@ public class Controller {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
+                loadManufactures();
+
             }break;
 
             //PcDetail
@@ -119,12 +122,17 @@ public class Controller {
     }
 
     public void buttonConnectClicked(ActionEvent actionEvent) throws SQLException {
-        manufactureData.addAll(db.getManufacturesList());
+        //manufactureData.addAll(db.getManufacturesList());
+        loadManufactures();
         pcDetailsData.addAll(db.getPcDetailsList());
         pcDetailModelData.addAll(db.getPcDetailModelList());
         pcDetailTypeData.addAll(db.getPcDetailTypes());
     }
 
+    private void loadManufactures() throws SQLException {
+        manufactureData.clear();
+        manufactureData.addAll(db.getManufacturesList());
+    }
     private void initializeTable(){
         manufactureId.setCellValueFactory(new PropertyValueFactory<Manufacture, Integer>("id"));
         manufactureName.setCellValueFactory(new PropertyValueFactory<Manufacture, String>("name"));

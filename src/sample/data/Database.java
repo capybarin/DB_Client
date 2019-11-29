@@ -1,5 +1,6 @@
 package sample.data;
 
+import io.reactivex.Single;
 import sample.models.Manufacture;
 import sample.models.PcDetail;
 import sample.models.PcDetailModel;
@@ -14,7 +15,8 @@ public class Database {
 
     public static Database getInstance() throws ClassNotFoundException {
         if(mInstance == null){
-            mInstance = new Database("root","qwerty","jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC");
+//            mInstance = new Database("root","qwerty","jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC");
+            mInstance = new Database("root","12345678","jdbc:mysql://localhost:3306/csd_db1?serverTimezone=UTC");
         }
         return mInstance;
     }
@@ -63,5 +65,17 @@ public class Database {
             pcDetailTypesList.add(new PcDetailType(pcDetails.getInt(1), pcDetails.getString(2)));
         }
         return pcDetailTypesList;
+    }
+
+    public Single<Boolean> addManufacture(String manufactureName){
+        return Single.create(emitter ->{
+            try {
+                connection.createStatement().execute("insert into manufacture (manufacture_name) values ('"+ manufactureName+ "')");
+                emitter.onSuccess(true);
+            }catch (Exception exception){
+                emitter.onError(exception);
+            }
+                }
+        );
     }
 }
