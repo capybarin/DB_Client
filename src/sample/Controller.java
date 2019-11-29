@@ -30,21 +30,22 @@ public class Controller {
 
     public TableView<PcDetail> pcDetailTableView;
     public TableColumn<PcDetail, Integer> pcdetailId;
-    public TableColumn<PcDetail, String> pcDetailModelId;
+    public TableColumn<PcDetail, Integer> pcDetailModelId;
     public TableColumn<PcDetail, String> detailName;
-    public TableColumn<PcDetail, String> detailPrice;
+    public TableColumn<PcDetail, Double> detailPrice;
 
     public TableView<PcDetailModel> pcDetailModelTableView;
     public TableColumn<PcDetailModel, Integer> pcDetailModelId_;
     public TableColumn<PcDetailModel, String> pcDetailModelModel;
-    public TableColumn<PcDetailModel, String> pcDetailModelManufactureId;
-    public TableColumn<PcDetailModel, String> pcDetailModelTypeId;
+    public TableColumn<PcDetailModel, Integer> pcDetailModelManufactureId;
+    public TableColumn<PcDetailModel, Integer> pcDetailModelTypeId;
 
     public TableView<PcDetailType> pcDetailTypeTableView;
     public TableColumn<PcDetailType, Integer> pcDetailTypeId;
     public TableColumn<PcDetailType, String> pcDetailTypeName;
 
     private Database db;
+
     private ObservableList<Manufacture> manufactureData  = FXCollections.observableArrayList();
     private ObservableList<PcDetail> pcDetailsData = FXCollections.observableArrayList();
     private ObservableList<PcDetailModel> pcDetailModelData = FXCollections.observableArrayList();
@@ -85,6 +86,7 @@ public class Controller {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
+                loadDetailsData();
             }break;
 
             //PcDetailModel
@@ -99,6 +101,7 @@ public class Controller {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
+                loadModelData();
             }break;
 
             //PcDetailType
@@ -113,6 +116,7 @@ public class Controller {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
+                loadTypeData();
             }break;
         }
     }
@@ -158,15 +162,15 @@ public class Controller {
         manufactureView.setItems(manufactureData);
 
         pcdetailId.setCellValueFactory(new PropertyValueFactory<PcDetail, Integer>("id"));
-        pcDetailModelId.setCellValueFactory(new PropertyValueFactory<PcDetail, String>("pcDetailModelId"));
+        pcDetailModelId.setCellValueFactory(new PropertyValueFactory<PcDetail, Integer>("pcDetailModelId"));
         detailName.setCellValueFactory(new PropertyValueFactory<PcDetail, String>("detailName"));
-        detailPrice.setCellValueFactory(new PropertyValueFactory<PcDetail, String>("detailPrice"));
+        detailPrice.setCellValueFactory(new PropertyValueFactory<PcDetail, Double>("detailPrice"));
         pcDetailTableView.setItems(pcDetailsData);
 
         pcDetailModelId_.setCellValueFactory(new PropertyValueFactory<PcDetailModel, Integer>("id"));
         pcDetailModelModel.setCellValueFactory(new PropertyValueFactory<PcDetailModel, String>("model"));
-        pcDetailModelManufactureId.setCellValueFactory(new PropertyValueFactory<PcDetailModel, String>("manufactureId"));
-        pcDetailModelTypeId.setCellValueFactory(new PropertyValueFactory<PcDetailModel, String>("pcDetailTypeId"));
+        pcDetailModelManufactureId.setCellValueFactory(new PropertyValueFactory<PcDetailModel, Integer>("manufactureId"));
+        pcDetailModelTypeId.setCellValueFactory(new PropertyValueFactory<PcDetailModel, Integer>("pcDetailTypeId"));
         pcDetailModelTableView.setItems(pcDetailModelData);
 
         pcDetailTypeId.setCellValueFactory(new PropertyValueFactory<PcDetailType, Integer>("id"));

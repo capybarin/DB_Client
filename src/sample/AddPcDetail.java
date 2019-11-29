@@ -35,12 +35,18 @@ public class AddPcDetail {
                             }, throwable -> {
                                 System.out.println(throwable.getLocalizedMessage());
                             });
+                } else {
+                    System.out.println("Detail price is empty");
+
                 }
-                System.out.println("Detail price is empty");
+            } else {
+                System.out.println("Detail name is empty");
+
             }
-            System.out.println("Detail name is empty");
+        } else {
+            System.out.println("Model id is empty");
+
         }
-        System.out.println("Model id is empty");
     }
 
     public void close(ActionEvent actionEvent){

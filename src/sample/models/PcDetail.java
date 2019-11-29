@@ -2,11 +2,11 @@ package sample.models;
 
 public class PcDetail {
     private int id;
-    private String pcDetailModelId;
+    private int pcDetailModelId;
     private String detailName;
-    private String detailPrice;
+    private double detailPrice;
 
-    public PcDetail(int id, String pcDetailModelId, String detailName, String detailPrice) {
+    public PcDetail(int id, int pcDetailModelId, String detailName, double detailPrice) {
         this.id = id;
         this.pcDetailModelId = pcDetailModelId;
         this.detailName = detailName;
@@ -15,7 +15,7 @@ public class PcDetail {
 
     public void setId(int id){this.id = id;}
 
-    public void setPcDetailModelId(String pcDetailModelId) {
+    public void setPcDetailModelId(int pcDetailModelId) {
         this.pcDetailModelId = pcDetailModelId;
     }
 
@@ -23,7 +23,7 @@ public class PcDetail {
         return id;
     }
 
-    public String getPcDetailModelId() {
+    public int getPcDetailModelId() {
         return pcDetailModelId;
     }
 
@@ -31,7 +31,7 @@ public class PcDetail {
         return detailName;
     }
 
-    public String getDetailPrice() {
+    public double getDetailPrice() {
         return detailPrice;
     }
 
@@ -39,7 +39,7 @@ public class PcDetail {
         this.detailName = detailName;
     }
 
-    public void setDetailPrice(String detailPrice) {
+    public void setDetailPrice(double detailPrice) {
         this.detailPrice = detailPrice;
     }
 }

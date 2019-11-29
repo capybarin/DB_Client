@@ -3,10 +3,10 @@ package sample.models;
 public class PcDetailModel {
     private int id;
     private String model;
-    private String manufactureId;
-    private String pcDetailTypeId;
+    private int manufactureId;
+    private int pcDetailTypeId;
 
-    public PcDetailModel(int id, String model, String manufactureId, String pcDetailTypeId) {
+    public PcDetailModel(int id, String model, int manufactureId, int pcDetailTypeId) {
         this.id = id;
         this.model = model;
         this.manufactureId = manufactureId;
@@ -21,11 +21,11 @@ public class PcDetailModel {
         return model;
     }
 
-    public String getManufactureId() {
+    public int getManufactureId() {
         return manufactureId;
     }
 
-    public String getPcDetailTypeId() {
+    public int getPcDetailTypeId() {
         return pcDetailTypeId;
     }
 
@@ -33,11 +33,11 @@ public class PcDetailModel {
         this.model = model;
     }
 
-    public void setManufactureId(String manufactureId) {
+    public void setManufactureId(int manufactureId) {
         this.manufactureId = manufactureId;
     }
 
-    public void setPcDetailTypeId(String pcDetailTypeId) {
+    public void setPcDetailTypeId(int pcDetailTypeId) {
         this.pcDetailTypeId = pcDetailTypeId;
     }
 

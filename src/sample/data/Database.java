@@ -15,8 +15,8 @@ public class Database {
 
     public static Database getInstance() throws ClassNotFoundException {
         if(mInstance == null){
-            mInstance = new Database("root","qwerty","jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC");
- //           mInstance = new Database("root","12345678","jdbc:mysql://localhost:3306/csd_db1?serverTimezone=UTC");
+//            mInstance = new Database("root","qwerty","jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC");
+            mInstance = new Database("root","12345678","jdbc:mysql://localhost:3306/csd_db1?serverTimezone=UTC");
         }
         return mInstance;
     }
@@ -44,7 +44,7 @@ public class Database {
         ArrayList<PcDetail> pcDetailsList = new ArrayList<>();
         ResultSet pcDetails = connection.createStatement().executeQuery("SELECT * FROM pc_detail");
         while (pcDetails.next()) {
-            pcDetailsList.add(new PcDetail(pcDetails.getInt(1), pcDetails.getString(2),pcDetails.getString(3),pcDetails.getString(4)));
+            pcDetailsList.add(new PcDetail(pcDetails.getInt(1), pcDetails.getInt(2),pcDetails.getString(3),pcDetails.getDouble(4)));
         }
         return pcDetailsList;
     }
@@ -53,7 +53,7 @@ public class Database {
         ArrayList<PcDetailModel> pcDetailModelsList = new ArrayList<>();
         ResultSet pcDetails = connection.createStatement().executeQuery("SELECT * FROM pc_detail_model");
         while (pcDetails.next()) {
-            pcDetailModelsList.add(new PcDetailModel(pcDetails.getInt(1), pcDetails.getString(2),pcDetails.getString(3),pcDetails.getString(4)));
+            pcDetailModelsList.add(new PcDetailModel(pcDetails.getInt(1), pcDetails.getString(2),pcDetails.getInt(3),pcDetails.getInt(4)));
         }
         return pcDetailModelsList;
     }
@@ -82,7 +82,7 @@ public class Database {
     public Single<Boolean> addPcDetail(String pcDetailId, String Dname, String price){
         return Single.create(emitter ->{
                     try {
-                        connection.createStatement().execute("insert into pc_detail (pcDetailId, Dname, price) values ('" + pcDetailId + "'" +"'"+ Dname+"'" + "'" + price+" ')");
+                        connection.createStatement().execute("INSERT INTO pc_detail (pc_detail_model_id, detail_name, detail_price) VALUES ('" + pcDetailId +"','" + Dname + "','" + price +"');");
                         emitter.onSuccess(true);
                     }catch (Exception exception){
                         emitter.onError(exception);
