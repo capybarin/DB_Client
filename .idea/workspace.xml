@@ -122,9 +122,9 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.1603128" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.30151337" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RunDashboard">
@@ -227,6 +227,7 @@
       <workItem from="1575041000529" duration="35000" />
       <workItem from="1575052179939" duration="85000" />
       <workItem from="1575052324776" duration="8841000" />
+      <workItem from="1575064733006" duration="2224000" />
     </task>
     <servers />
   </component>

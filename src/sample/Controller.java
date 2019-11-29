@@ -50,8 +50,7 @@ public class Controller {
     private ObservableList<PcDetailModel> pcDetailModelData = FXCollections.observableArrayList();
     private ObservableList<PcDetailType> pcDetailTypeData = FXCollections.observableArrayList();
 
-    public void initialize() throws ClassNotFoundException {
-        db = Database.getInstance();
+    public void initialize() {
         initializeTable();
     }
 
@@ -122,10 +121,24 @@ public class Controller {
     }
 
     public void buttonConnectClicked(ActionEvent actionEvent) throws SQLException {
-        //manufactureData.addAll(db.getManufacturesList());
+        try {
+            db = Database.getInstance();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         loadManufactures();
-        pcDetailsData.addAll(db.getPcDetailsList());
+        loadDetailsData();
+        loadModelData();
+        loadTypeData();
+    }
+
+    private void loadModelData() throws SQLException {
+        pcDetailModelData.clear();
         pcDetailModelData.addAll(db.getPcDetailModelList());
+    }
+
+    private void loadTypeData() throws SQLException {
+        pcDetailTypeData.clear();
         pcDetailTypeData.addAll(db.getPcDetailTypes());
     }
 
@@ -133,6 +146,12 @@ public class Controller {
         manufactureData.clear();
         manufactureData.addAll(db.getManufacturesList());
     }
+
+    private void loadDetailsData() throws SQLException {
+        pcDetailsData.clear();
+        pcDetailsData.addAll(db.getPcDetailsList());
+    }
+
     private void initializeTable(){
         manufactureId.setCellValueFactory(new PropertyValueFactory<Manufacture, Integer>("id"));
         manufactureName.setCellValueFactory(new PropertyValueFactory<Manufacture, String>("name"));

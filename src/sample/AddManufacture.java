@@ -4,7 +4,6 @@ import io.reactivex.Scheduler;
 import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 import io.reactivex.schedulers.Schedulers;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import sample.data.Database;
@@ -19,10 +18,6 @@ public class AddManufacture {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    private void initialize(){
-
     }
 
     public void save(ActionEvent actionEvent){
