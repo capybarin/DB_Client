@@ -15,8 +15,8 @@ public class Database {
 
     public static Database getInstance() throws ClassNotFoundException {
         if(mInstance == null){
-//            mInstance = new Database("root","qwerty","jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC");
-            mInstance = new Database("root","12345678","jdbc:mysql://localhost:3306/csd_db1?serverTimezone=UTC");
+           mInstance = new Database("root","qwerty","jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC");
+//            mInstance = new Database("root","12345678","jdbc:mysql://localhost:3306/csd_db1?serverTimezone=UTC");
         }
         return mInstance;
     }
@@ -91,6 +91,28 @@ public class Database {
         );
     }
 
+    public Single<Boolean> addDetailType(String detailTypeName){
+        return Single.create(emitter ->{
+                    try {
+                        connection.createStatement().execute("insert into pc_detail_type (pc_detail_type_name) values ('"+ detailTypeName+ "')");
+                        emitter.onSuccess(true);
+                    }catch (Exception exception){
+                        emitter.onError(exception);
+                    }
+                }
+        );
+    }
 
+    public Single<Boolean> addDetailModel(String model, String manufacId, String detailTypeId){
+        return Single.create(emitter ->{
+                    try {
+                        connection.createStatement().execute("insert into pc_detail_model (pc_detail_model, manufacture_id, pc_detail_type_id) values ('"+ model+"','"+manufacId+"','"+detailTypeId+ "')");
+                        emitter.onSuccess(true);
+                    }catch (Exception exception){
+                        emitter.onError(exception);
+                    }
+                }
+        );
+    }
 
 }
