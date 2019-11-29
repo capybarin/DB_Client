@@ -6,6 +6,28 @@ public class PcDetailModel {
     private String manufactureId;
     private String pcDetailTypeId;
 
+    public PcDetailModel(int id, String model, String manufactureId, String pcDetailTypeId) {
+        this.id = id;
+        this.model = model;
+        this.manufactureId = manufactureId;
+        this.pcDetailTypeId = pcDetailTypeId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getManufactureId() {
+        return manufactureId;
+    }
+
+    public String getPcDetailTypeId() {
+        return pcDetailTypeId;
+    }
 
     public void setModel(String model) {
         this.model = model;

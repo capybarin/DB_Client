@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sample.AddManufacture"
+            prefHeight="120.0" prefWidth="300.0">
+    <children>
+        <Label layoutX="15.0" layoutY="35.0" prefHeight="20.0" prefWidth="76.0" text="Name:">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="name" layoutX="92.0" layoutY="30.0" prefHeight="30.0" prefWidth="194.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </TextField>
+        <Button layoutX="162.0" layoutY="80.0" mnemonicParsing="false" onAction="#close" prefWidth="90.0" text="Закрыть">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button layoutX="47.0" layoutY="80.0" mnemonicParsing="false" onAction="#save" prefWidth="90.0" text="Добавить">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
