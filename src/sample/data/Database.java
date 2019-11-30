@@ -115,4 +115,19 @@ public class Database {
         );
     }
 
+    //DELETE FROM `mydb`.`manufacture` WHERE `idmanufacture`='9'
+    public Single<Boolean> delManufacture (int index){
+        System.out.println("DELETE FROM manufacture WHERE idmanufacture='"+index+"'");
+        return Single.create(emitter ->{
+                    try {
+                        connection.createStatement().execute("DELETE FROM manufacture WHERE idmanufacture='"+index+"'");
+                        emitter.onSuccess(true);
+                    }catch (Exception exception){
+                        emitter.onError(exception);
+                    }
+                }
+        );
+    }
+
+
 }

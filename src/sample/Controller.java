@@ -122,6 +122,32 @@ public class Controller {
     }
 
     public void buttonRemoveClicked(ActionEvent actionEvent) {
+        switch (tableContainer.getSelectionModel().getSelectedIndex()){
+            case (0):{
+                    Manufacture manufacture = manufactureView.getSelectionModel().getSelectedItem();
+                    if (manufacture!=null){
+                        db.delManufacture(manufacture.getId());
+                        System.out.println(manufacture.getId());}
+            }break;
+            case (1):{
+                    PcDetail pcDetail = pcDetailTableView.getSelectionModel().getSelectedItem();
+                    if(pcDetail!=null){
+
+                    }
+            }break;
+            case (2):{
+                    PcDetailModel pcDetailModel = pcDetailModelTableView.getSelectionModel().getSelectedItem();
+                    if(pcDetailModel!=null){
+
+                    }
+            }break;
+            case (3):{
+                    PcDetailType pcDetailType = pcDetailTypeTableView.getSelectionModel().getSelectedItem();
+                    if(pcDetailType!=null){
+
+                    }
+            }break;
+        }
     }
 
     public void buttonConnectClicked(ActionEvent actionEvent) throws SQLException {
