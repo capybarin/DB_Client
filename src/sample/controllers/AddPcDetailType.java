@@ -1,6 +1,5 @@
-package sample;
+package sample.controllers;
 
-import io.reactivex.Scheduler;
 import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 import io.reactivex.schedulers.Schedulers;
 import javafx.event.ActionEvent;
@@ -8,7 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import sample.data.Database;
 
-public class AddManufacture {
+public class AddPcDetailType {
     public TextField name;
 
     private Database db;
@@ -22,7 +21,7 @@ public class AddManufacture {
 
     public void save(ActionEvent actionEvent){
         if(!name.getText().isBlank()){
-            db.addManufacture(name.getText())
+            db.addDetailType(name.getText())
                     .subscribeOn(Schedulers.io())
                     .observeOn(JavaFxScheduler.platform())
                     .subscribe(result -> {
@@ -32,9 +31,9 @@ public class AddManufacture {
                     }, throwable -> {
                         System.out.println(throwable.getLocalizedMessage());
                     });
-        }
+        }else
+            System.out.println("Name is empty");
     }
-
 
     public void close(ActionEvent actionEvent){
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

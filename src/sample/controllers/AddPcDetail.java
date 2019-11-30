@@ -1,4 +1,4 @@
-package sample;
+package sample.controllers;
 
 import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 import io.reactivex.schedulers.Schedulers;

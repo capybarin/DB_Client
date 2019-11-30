@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="209.0" prefWidth="291.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AddPcDetailModel">
+<AnchorPane prefHeight="209.0" prefWidth="291.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AddPcDetailModel">
    <children>
       <Label layoutX="14.0" layoutY="29.0" prefHeight="31.0" prefWidth="88.0" text="Pc detail model:" />
       <Label layoutX="16.0" layoutY="68.0" prefHeight="31.0" prefWidth="84.0" text="Manufacture id:" />

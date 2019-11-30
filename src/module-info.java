@@ -8,4 +8,6 @@ module DB.Client {
 
     opens sample;
     opens sample.models;
+    opens sample.data;
+    opens sample.controllers;
 }

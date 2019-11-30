@@ -1,4 +1,4 @@
-package sample;
+package sample.controllers;
 
 import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
 import io.reactivex.schedulers.Schedulers;
@@ -61,7 +61,7 @@ public class Controller {
         switch (tableContainer.getSelectionModel().getSelectedIndex()){
             //Manufacture
             case (0):{
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/addManufacture.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/windows/addManufacture.fxml"));
                 Parent root = null;
                 try {
                     root = (Parent) fxmlLoader.load();
@@ -78,7 +78,7 @@ public class Controller {
 
             //PcDetail
             case(1):{
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/addPcDetail.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/windows/addPcDetail.fxml"));
                 Parent root = null;
                 try {
                     root = (Parent) fxmlLoader.load();
@@ -93,7 +93,7 @@ public class Controller {
 
             //PcDetailModel
             case(2):{
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/addPcDetailModel.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/windows/addPcDetailModel.fxml"));
                 Parent root = null;
                 try {
                     root = (Parent) fxmlLoader.load();
@@ -108,7 +108,7 @@ public class Controller {
 
             //PcDetailType
             case(3):{
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/addPcDetailType.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sample/windows/addPcDetailType.fxml"));
                 Parent root = null;
                 try {
                     root = (Parent) fxmlLoader.load();
