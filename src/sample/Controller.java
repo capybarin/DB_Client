@@ -1,5 +1,7 @@
 package sample;
 
+import io.reactivex.rxjavafx.schedulers.JavaFxScheduler;
+import io.reactivex.schedulers.Schedulers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -124,28 +126,60 @@ public class Controller {
     public void buttonRemoveClicked(ActionEvent actionEvent) {
         switch (tableContainer.getSelectionModel().getSelectedIndex()){
             case (0):{
-                    Manufacture manufacture = manufactureView.getSelectionModel().getSelectedItem();
-                    if (manufacture!=null){
-                        db.delManufacture(manufacture.getId());
-                        System.out.println(manufacture.getId());}
+                Manufacture manufacture = manufactureView.getSelectionModel().getSelectedItem();
+                if (manufacture!=null){
+                    db.delManufacture(manufacture.getId())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(JavaFxScheduler.platform())
+                            .subscribe(result -> {
+                                System.out.println("success");
+                                loadManufactures();
+                            }, throwable -> {
+                                System.out.println(throwable.getLocalizedMessage());
+                            });
+                    System.out.println(manufacture.getId());}
             }break;
             case (1):{
                     PcDetail pcDetail = pcDetailTableView.getSelectionModel().getSelectedItem();
-                    if(pcDetail!=null){
-
-                    }
+                if (pcDetail!=null){
+                    db.delDetail(pcDetail.getId())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(JavaFxScheduler.platform())
+                            .subscribe(result -> {
+                                System.out.println("success");
+                                loadDetailsData();
+                            }, throwable -> {
+                                System.out.println(throwable.getLocalizedMessage());
+                            });
+                    System.out.println(pcDetail.getId());}
             }break;
             case (2):{
                     PcDetailModel pcDetailModel = pcDetailModelTableView.getSelectionModel().getSelectedItem();
-                    if(pcDetailModel!=null){
-
-                    }
+                if (pcDetailModel!=null){
+                    db.delDetailModel(pcDetailModel.getId())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(JavaFxScheduler.platform())
+                            .subscribe(result -> {
+                                System.out.println("success");
+                                loadModelData();
+                            }, throwable -> {
+                                System.out.println(throwable.getLocalizedMessage());
+                            });
+                    System.out.println(pcDetailModel.getId());}
             }break;
             case (3):{
                     PcDetailType pcDetailType = pcDetailTypeTableView.getSelectionModel().getSelectedItem();
-                    if(pcDetailType!=null){
-
-                    }
+                if (pcDetailType!=null){
+                    db.delDetailType(pcDetailType.getId())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(JavaFxScheduler.platform())
+                            .subscribe(result -> {
+                                System.out.println("success");
+                                loadTypeData();
+                            }, throwable -> {
+                                System.out.println(throwable.getLocalizedMessage());
+                            });
+                    System.out.println(pcDetailType.getId());}
             }break;
         }
     }

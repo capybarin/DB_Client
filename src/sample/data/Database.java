@@ -115,9 +115,7 @@ public class Database {
         );
     }
 
-    //DELETE FROM `mydb`.`manufacture` WHERE `idmanufacture`='9'
     public Single<Boolean> delManufacture (int index){
-        System.out.println("DELETE FROM manufacture WHERE idmanufacture='"+index+"'");
         return Single.create(emitter ->{
                     try {
                         connection.createStatement().execute("DELETE FROM manufacture WHERE idmanufacture='"+index+"'");
@@ -129,5 +127,39 @@ public class Database {
         );
     }
 
+    public Single<Boolean> delDetail (int index){
+        return Single.create(emitter ->{
+                    try {
+                        connection.createStatement().execute("DELETE FROM pc_detail WHERE idpc_detail='"+index+"'");
+                        emitter.onSuccess(true);
+                    }catch (Exception exception){
+                        emitter.onError(exception);
+                    }
+                }
+        );
+    }
 
+    public Single<Boolean> delDetailModel (int index){
+        return Single.create(emitter ->{
+                    try {
+                        connection.createStatement().execute("DELETE FROM pc_detail_model WHERE idpc_detail_model='"+index+"'");
+                        emitter.onSuccess(true);
+                    }catch (Exception exception){
+                        emitter.onError(exception);
+                    }
+                }
+        );
+    }
+
+    public Single<Boolean> delDetailType (int index){
+        return Single.create(emitter ->{
+                    try {
+                        connection.createStatement().execute("DELETE FROM pc_detail_type WHERE pc_detail_type_id='"+index+"'");
+                        emitter.onSuccess(true);
+                    }catch (Exception exception){
+                        emitter.onError(exception);
+                    }
+                }
+        );
+    }
 }
